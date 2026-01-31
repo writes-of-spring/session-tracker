@@ -1,5 +1,5 @@
 import { revalidateLogic } from "@tanstack/react-form";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { TooltipTrigger } from "react-aria-components";
 import { z } from "zod";
@@ -205,7 +205,11 @@ function WeeklyReport() {
   return (
     <div className="weekly-shell px-6 py-16">
       <div className="mx-auto w-full max-w-5xl">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-6">
+          <Link to="/" className="text-sm font-medium text-ink/60 hover:text-ink">
+            Back to home
+          </Link>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs tracking-widest text-ink/60 uppercase">Weekly report</p>
             <h1 className="mt-3 text-3xl font-semibold text-ink md:text-5xl">
@@ -214,6 +218,7 @@ function WeeklyReport() {
             <p className="mt-4 text-sm text-ink/70">
               Add each client entry, check receipts, and download a CSV copy to your device.
             </p>
+          </div>
           </div>
         </div>
 

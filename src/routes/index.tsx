@@ -11,12 +11,9 @@ function App() {
         <div className="max-w-2xl">
           <p className="text-sm tracking-widest text-ink/60 uppercase">Session Tracker</p>
           <h1 className="mt-6 text-4xl leading-tight font-semibold text-ink md:text-6xl">
-            Capture weekly sessions with intention and care.
+            Capture weekly records with intention and care.
           </h1>
-          <p className="mt-6 text-lg text-ink/70">
-            Keep each client entry tidy, receipt-ready, and secure on your device. Monthly reporting
-            is on deck.
-          </p>
+          <p className="mt-6 text-lg text-ink/70">Streamline your session tracking.</p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -30,7 +27,7 @@ function App() {
             </p>
           </Link>
 
-          <div className="card-secondary opacity-70">
+          <div className="card-primary opacity-70">
             <div className="flex items-center justify-between">
               <span className="text-2xl font-semibold text-ink">Record Monthly Report</span>
               <span className="text-sm tracking-widest text-ink/60 uppercase">Soon</span>

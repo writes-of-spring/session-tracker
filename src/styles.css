@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @plugin "tailwindcss-react-aria-components";
 @plugin "tailwindcss-animate";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Space Grotesk", "Segoe UI", sans-serif;
@@ -18,6 +19,7 @@
 
 body {
   @apply m-0 bg-mist text-ink font-sans;
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -39,7 +41,7 @@ body {
 
   .card-primary {
     @apply rounded-3xl border border-ink/5 p-8;
-    background: linear-gradient(140deg, rgb(var(--color-tide-rgb) / 0.15), rgb(255 255 255 / 0.95));
+    background-color: var(--color-white);
     box-shadow: 0 20px 60px rgb(var(--color-tide-rgb) / 0.18);
     transition:
       transform 200ms ease,
