@@ -5,6 +5,7 @@ import {
   ColorWheelProps as AriaColorWheelProps,
   ColorWheelTrack,
 } from "react-aria-components";
+
 import { ColorThumb } from "@/components/ui/ColorThumb";
 
 export interface ColorWheelProps extends Omit<AriaColorWheelProps, "outerRadius" | "innerRadius"> {}

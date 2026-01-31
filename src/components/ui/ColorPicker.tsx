@@ -6,18 +6,19 @@ import {
   ColorPickerProps as AriaColorPickerProps,
   DialogTrigger,
 } from "react-aria-components";
-import { ColorSwatch } from "@/components/ui/ColorSwatch";
+import { tv } from "tailwind-variants";
+
 import { ColorArea } from "@/components/ui/ColorArea";
-import { ColorSlider } from "@/components/ui/ColorSlider";
 import { ColorField } from "@/components/ui/ColorField";
+import { ColorSlider } from "@/components/ui/ColorSlider";
+import { ColorSwatch } from "@/components/ui/ColorSwatch";
 import { Dialog } from "@/components/ui/Dialog";
 import { Popover } from "@/components/ui/Popover";
-import { tv } from "tailwind-variants";
 import { focusRing } from "@/lib/react-aria-utils";
 
 const buttonStyles = tv({
   extend: focusRing,
-  base: "border-0 bg-transparent flex gap-2 items-center cursor-default rounded-xs font-sans text-sm text-neutral-800 dark:text-neutral-200 [-webkit-tap-highlight-color:transparent]",
+  base: "flex cursor-default items-center gap-2 rounded-xs border-0 bg-transparent font-sans text-sm text-neutral-800 [-webkit-tap-highlight-color:transparent] dark:text-neutral-200",
 });
 
 export interface ColorPickerProps extends Omit<AriaColorPickerProps, "children"> {

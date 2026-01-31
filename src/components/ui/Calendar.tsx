@@ -1,17 +1,17 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
-    Calendar as AriaCalendar,
-    CalendarGridHeader as AriaCalendarGridHeader,
-    type CalendarProps as AriaCalendarProps,
-    CalendarCell,
-    CalendarGrid,
-    CalendarGridBody,
-    CalendarHeaderCell,
-    type DateValue,
-    Heading,
-    Text,
-    useLocale,
+  Calendar as AriaCalendar,
+  CalendarGridHeader as AriaCalendarGridHeader,
+  type CalendarProps as AriaCalendarProps,
+  CalendarCell,
+  CalendarGrid,
+  CalendarGridBody,
+  CalendarHeaderCell,
+  type DateValue,
+  Heading,
+  Text,
+  useLocale,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 

@@ -4,25 +4,25 @@ import { ModalOverlay, ModalOverlayProps, Modal as RACModal } from "react-aria-c
 import { tv } from "tailwind-variants";
 
 const overlayStyles = tv({
-  base: "absolute top-0 left-0 w-full h-(--page-height) isolate z-20 bg-black/[50%] text-center backdrop-blur-lg",
+  base: "absolute top-0 left-0 isolate z-20 h-(--page-height) w-full bg-black/[50%] text-center backdrop-blur-lg",
   variants: {
     isEntering: {
-      true: "animate-in fade-in duration-200 ease-out",
+      true: "duration-200 ease-out animate-in fade-in",
     },
     isExiting: {
-      true: "animate-out fade-out duration-200 ease-in",
+      true: "duration-200 ease-in animate-out fade-out",
     },
   },
 });
 
 const modalStyles = tv({
-  base: "font-sans w-full max-w-[min(90vw,450px)] max-h-[calc(var(--visual-viewport-height)*.9)] rounded-2xl bg-white dark:bg-neutral-800/70 dark:backdrop-blur-2xl dark:backdrop-saturate-200 forced-colors:bg-[Canvas] text-left align-middle text-neutral-700 dark:text-neutral-300 shadow-2xl bg-clip-padding border border-black/10 dark:border-white/10",
+  base: "max-h-[calc(var(--visual-viewport-height)*.9)] w-full max-w-[min(90vw,450px)] rounded-2xl border border-black/10 bg-white bg-clip-padding text-left align-middle font-sans text-neutral-700 shadow-2xl dark:border-white/10 dark:bg-neutral-800/70 dark:text-neutral-300 dark:backdrop-blur-2xl dark:backdrop-saturate-200 forced-colors:bg-[Canvas]",
   variants: {
     isEntering: {
-      true: "animate-in zoom-in-105 ease-out duration-200",
+      true: "duration-200 ease-out animate-in zoom-in-105",
     },
     isExiting: {
-      true: "animate-out zoom-out-95 ease-in duration-200",
+      true: "duration-200 ease-in animate-out zoom-out-95",
     },
   },
 });
@@ -30,7 +30,7 @@ const modalStyles = tv({
 export function Modal(props: ModalOverlayProps) {
   return (
     <ModalOverlay {...props} className={overlayStyles}>
-      <div className="sticky top-0 left-0 w-full h-(--visual-viewport-height) flex items-center justify-center box-border">
+      <div className="sticky top-0 left-0 box-border flex h-(--visual-viewport-height) w-full items-center justify-center">
         <RACModal {...props} className={modalStyles} />
       </div>
     </ModalOverlay>

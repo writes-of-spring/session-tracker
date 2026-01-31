@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect } from "react";
 import {
   Autocomplete as AriaAutocomplete,
   AutocompleteProps as AriaAutocompleteProps,
@@ -6,10 +7,10 @@ import {
   useFilter,
   Dialog,
 } from "react-aria-components";
+
 import { Menu } from "@/components/ui/Menu";
-import { SearchField } from "@/components/ui/SearchField";
 import { Modal } from "@/components/ui/Modal";
-import React, { useEffect } from "react";
+import { SearchField } from "@/components/ui/SearchField";
 
 export interface CommandPaletteProps<T extends object>
   extends Omit<AriaAutocompleteProps, "children">, AriaMenuProps<T> {
@@ -39,7 +40,7 @@ export function CommandPalette<T extends object>(props: CommandPaletteProps<T>) 
 
   return (
     <Modal isDismissable isOpen={isOpen} onOpenChange={onOpenChange}>
-      <Dialog className="flex flex-col max-h-[inherit]">
+      <Dialog className="flex max-h-[inherit] flex-col">
         <AriaAutocomplete filter={contains} {...props}>
           <SearchField
             autoFocus
@@ -49,7 +50,7 @@ export function CommandPalette<T extends object>(props: CommandPaletteProps<T>) 
           />
           <Menu
             {...props}
-            className="flex-1 min-h-0"
+            className="min-h-0 flex-1"
             renderEmptyState={() => "No results found."}
           />
         </AriaAutocomplete>

@@ -6,12 +6,13 @@ import {
   ValidationResult,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+
 import { Description, FieldError, Input, Label, fieldBorderStyles } from "@/components/ui/Field";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
 
 const inputStyles = tv({
   extend: focusRing,
-  base: "border-1 rounded-lg min-h-9 font-sans text-sm py-0 px-3 box-border transition",
+  base: "box-border min-h-9 rounded-lg border-1 px-3 py-0 font-sans text-sm transition",
   variants: {
     isFocused: fieldBorderStyles.variants.isFocusWithin,
     isInvalid: fieldBorderStyles.variants.isInvalid,

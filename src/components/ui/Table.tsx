@@ -24,6 +24,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
+
 import { Checkbox } from "@/components/ui/Checkbox";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
 
@@ -42,7 +43,7 @@ export function Table(props: TableProps) {
     >
       <AriaTable
         {...props}
-        className="border-separate border-spacing-0 box-border overflow-hidden has-[>[data-empty]]:h-full"
+        className="box-border border-separate border-spacing-0 overflow-hidden has-[>[data-empty]]:h-full"
       />
     </ResizableTableContainer>
   );
@@ -50,12 +51,12 @@ export function Table(props: TableProps) {
 
 const columnStyles = tv({
   extend: focusRing,
-  base: "px-2 h-5 box-border flex-1 flex gap-1 items-center overflow-hidden",
+  base: "box-border flex h-5 flex-1 items-center gap-1 overflow-hidden px-2",
 });
 
 const resizerStyles = tv({
   extend: focusRing,
-  base: "w-px px-[8px] translate-x-[8px] box-content py-1 h-5 bg-clip-content bg-neutral-400 dark:bg-neutral-500 forced-colors:bg-[ButtonBorder] cursor-col-resize rounded-xs resizing:bg-blue-600 forced-colors:resizing:bg-[Highlight] resizing:w-[2px] resizing:pl-[7px] -outline-offset-2",
+  base: "box-content h-5 w-px translate-x-[8px] cursor-col-resize rounded-xs bg-neutral-400 bg-clip-content px-[8px] py-1 -outline-offset-2 dark:bg-neutral-500 forced-colors:bg-[ButtonBorder] resizing:w-[2px] resizing:bg-blue-600 resizing:pl-[7px] forced-colors:resizing:bg-[Highlight]",
 });
 
 export function Column(props: ColumnProps) {
@@ -73,14 +74,14 @@ export function Column(props: ColumnProps) {
             <span className="truncate">{children}</span>
             {allowsSorting && (
               <span
-                className={`w-4 h-4 flex items-center justify-center transition ${
+                className={`flex h-4 w-4 items-center justify-center transition ${
                   sortDirection === "descending" ? "rotate-180" : ""
                 }`}
               >
                 {sortDirection && (
                   <ArrowUp
                     aria-hidden
-                    className="w-4 h-4 text-neutral-500 dark:text-neutral-400 forced-colors:text-[ButtonText]"
+                    className="h-4 w-4 text-neutral-500 dark:text-neutral-400 forced-colors:text-[ButtonText]"
                   />
                 )}
               </span>
@@ -110,7 +111,7 @@ export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
         <AriaColumn
           width={36}
           minWidth={36}
-          className="box-border p-2 text-sm font-semibold cursor-default text-start"
+          className="box-border cursor-default p-2 text-start text-sm font-semibold"
         >
           {selectionMode === "multiple" && <Checkbox slot="selection" />}
         </AriaColumn>
@@ -121,12 +122,12 @@ export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
 }
 
 export function TableBody<T extends object>(props: TableBodyProps<T>) {
-  return <AriaTableBody {...props} className="empty:italic empty:text-center empty:text-sm" />;
+  return <AriaTableBody {...props} className="empty:text-center empty:text-sm empty:italic" />;
 }
 
 const rowStyles = tv({
   extend: focusRing,
-  base: "group/row relative cursor-default select-none -outline-offset-2 text-neutral-900 disabled:text-neutral-300 dark:text-neutral-200 dark:disabled:text-neutral-600 text-sm hover:bg-neutral-100 pressed:bg-neutral-100 dark:hover:bg-neutral-800 dark:pressed:bg-neutral-800 selected:bg-blue-100 selected:hover:bg-blue-200 selected:pressed:bg-blue-200 dark:selected:bg-blue-700/30 dark:selected:hover:bg-blue-700/40 dark:selected:pressed:bg-blue-700/40 last:rounded-b-lg",
+  base: "group/row relative cursor-default text-sm text-neutral-900 -outline-offset-2 select-none last:rounded-b-lg hover:bg-neutral-100 disabled:text-neutral-300 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:disabled:text-neutral-600 pressed:bg-neutral-100 dark:pressed:bg-neutral-800 selected:bg-blue-100 selected:hover:bg-blue-200 dark:selected:bg-blue-700/30 dark:selected:hover:bg-blue-700/40 selected:pressed:bg-blue-200 dark:selected:pressed:bg-blue-700/40",
 });
 
 export function Row<T extends object>({ id, columns, children, ...otherProps }: RowProps<T>) {
@@ -151,7 +152,7 @@ export function Row<T extends object>({ id, columns, children, ...otherProps }: 
 
 const cellStyles = tv({
   extend: focusRing,
-  base: "box-border [-webkit-tap-highlight-color:transparent] border-b border-b-neutral-200 dark:border-b-neutral-700 group-last/row:border-b-0 [--selected-border:var(--color-blue-200)] dark:[--selected-border:var(--color-blue-900)] group-selected/row:border-(--selected-border) [:is(:has(+[data-selected])_*)]:border-(--selected-border) p-2 truncate -outline-offset-2 group-last/row:first:rounded-bl-lg group-last/row:last:rounded-br-lg",
+  base: "box-border truncate border-b border-b-neutral-200 p-2 -outline-offset-2 [--selected-border:var(--color-blue-200)] [-webkit-tap-highlight-color:transparent] group-last/row:border-b-0 group-selected/row:border-(--selected-border) group-last/row:first:rounded-bl-lg group-last/row:last:rounded-br-lg dark:border-b-neutral-700 dark:[--selected-border:var(--color-blue-900)] [:is(:has(+[data-selected])_*)]:border-(--selected-border)",
 });
 
 export function Cell(props: CellProps) {

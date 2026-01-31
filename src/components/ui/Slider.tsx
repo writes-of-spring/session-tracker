@@ -8,6 +8,7 @@ import {
   SliderTrack,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+
 import { Label } from "@/components/ui/Field";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
 
@@ -15,8 +16,8 @@ const trackStyles = tv({
   base: "rounded-full",
   variants: {
     orientation: {
-      horizontal: "w-full h-[6px]",
-      vertical: "h-full w-[6px] ml-[50%] -translate-x-[50%]",
+      horizontal: "h-[6px] w-full",
+      vertical: "ml-[50%] h-full w-[6px] -translate-x-[50%]",
     },
     isDisabled: {
       false: "bg-neutral-300 dark:bg-neutral-700 forced-colors:bg-[ButtonBorder]",
@@ -29,8 +30,8 @@ const fillStyles = tv({
   base: "absolute rounded-full",
   variants: {
     orientation: {
-      horizontal: "w-(--size) h-[6px] start-(--start,0)",
-      vertical: "h-(--size) w-[6px] bottom-(--start,0) ml-[50%] -translate-x-[50%]",
+      horizontal: "start-(--start,0) h-[6px] w-(--size)",
+      vertical: "bottom-(--start,0) ml-[50%] h-(--size) w-[6px] -translate-x-[50%]",
     },
     isDisabled: {
       false: "bg-blue-500 forced-colors:bg-[Highlight]",
@@ -41,7 +42,7 @@ const fillStyles = tv({
 
 const thumbStyles = tv({
   extend: focusRing,
-  base: "w-4.5 h-4.5 group-orientation-horizontal:mt-5 group-orientation-vertical:ml-2.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-700 dark:border-neutral-300",
+  base: "h-4.5 w-4.5 rounded-full border border-neutral-700 bg-neutral-50 group-orientation-horizontal:mt-5 group-orientation-vertical:ml-2.5 dark:border-neutral-300 dark:bg-neutral-900",
   variants: {
     isDragging: {
       true: "bg-neutral-700 dark:bg-neutral-300 forced-colors:bg-[ButtonBorder]",
@@ -74,7 +75,7 @@ export function Slider<T extends number | number[]>({
       <SliderOutput className="text-sm text-neutral-500 dark:text-neutral-400 orientation-vertical:hidden">
         {({ state }) => state.values.map((_, i) => state.getThumbValueLabel(i)).join(" – ")}
       </SliderOutput>
-      <SliderTrack className="group col-span-2 orientation-horizontal:h-5 orientation-vertical:w-5 orientation-vertical:h-38 flex items-center">
+      <SliderTrack className="group col-span-2 flex items-center orientation-horizontal:h-5 orientation-vertical:h-38 orientation-vertical:w-5">
         {({ state, ...renderProps }) => (
           <>
             <div className={trackStyles(renderProps)} />

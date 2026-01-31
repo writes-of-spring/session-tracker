@@ -1,4 +1,5 @@
 "use client";
+import { ChevronRight } from "lucide-react";
 import React, { useContext } from "react";
 import {
   Disclosure as AriaDisclosure,
@@ -9,20 +10,20 @@ import {
   Heading,
   DisclosureStateContext,
 } from "react-aria-components";
-import { Button } from "@/components/ui/Button";
 import { tv } from "tailwind-variants";
-import { ChevronRight } from "lucide-react";
+
+import { Button } from "@/components/ui/Button";
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 
 const disclosure = tv({
-  base: "group min-w-50 font-sans rounded-lg text-neutral-900 dark:text-neutral-200",
+  base: "group min-w-50 rounded-lg font-sans text-neutral-900 dark:text-neutral-200",
 });
 
 const chevron = tv({
-  base: "w-4 h-4 text-neutral-500 dark:text-neutral-400 transition-transform duration-200 ease-in-out",
+  base: "h-4 w-4 text-neutral-500 transition-transform duration-200 ease-in-out dark:text-neutral-400",
   variants: {
     isExpanded: {
-      true: "transform rotate-90",
+      true: "rotate-90 transform",
     },
     isDisabled: {
       true: "text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
@@ -54,7 +55,7 @@ export interface DisclosureHeaderProps {
 export function DisclosureHeader({ children }: DisclosureHeaderProps) {
   let { isExpanded } = useContext(DisclosureStateContext)!;
   return (
-    <Heading className="text-lg font-semibold m-0">
+    <Heading className="m-0 text-lg font-semibold">
       <Button slot="trigger" variant="quiet" className="w-full justify-start font-medium">
         {({ isDisabled }) => (
           <>

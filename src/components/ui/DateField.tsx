@@ -10,6 +10,7 @@ import {
   ValidationResult,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+
 import { Description, FieldError, Label, fieldGroupStyles } from "@/components/ui/Field";
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 
@@ -39,7 +40,7 @@ export function DateField<T extends DateValue>({
 }
 
 const segmentStyles = tv({
-  base: "inline p-0.5 whitespace-nowrap type-literal:p-0 rounded-xs outline outline-0 forced-color-adjust-none caret-transparent text-neutral-800 dark:text-neutral-200 forced-colors:text-[ButtonText] [-webkit-tap-highlight-color:transparent]",
+  base: "inline rounded-xs p-0.5 whitespace-nowrap text-neutral-800 caret-transparent outline outline-0 forced-color-adjust-none [-webkit-tap-highlight-color:transparent] dark:text-neutral-200 forced-colors:text-[ButtonText] type-literal:p-0",
   variants: {
     isPlaceholder: {
       true: "text-neutral-600 dark:text-neutral-400",

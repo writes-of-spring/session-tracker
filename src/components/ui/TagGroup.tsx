@@ -14,6 +14,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
+
 import { Description, Label } from "@/components/ui/Field";
 import { focusRing } from "@/lib/react-aria-utils";
 
@@ -31,7 +32,7 @@ const ColorContext = createContext<Color>("gray");
 
 const tagStyles = tv({
   extend: focusRing,
-  base: "transition cursor-default text-xs rounded-full border px-3 py-0.5 flex items-center max-w-fit gap-1 font-sans [-webkit-tap-highlight-color:transparent]",
+  base: "flex max-w-fit cursor-default items-center gap-1 rounded-full border px-3 py-0.5 font-sans text-xs transition [-webkit-tap-highlight-color:transparent]",
   variants: {
     color: {
       gray: "",
@@ -43,10 +44,10 @@ const tagStyles = tv({
       true: "pr-1",
     },
     isSelected: {
-      true: "bg-blue-600 text-white border-transparent forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-color-adjust-none",
+      true: "border-transparent bg-blue-600 text-white forced-color-adjust-none forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
     },
     isDisabled: {
-      true: "bg-neutral-100 dark:bg-transparent dark:border-white/20 text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
+      true: "bg-neutral-100 text-neutral-300 dark:border-white/20 dark:bg-transparent dark:text-neutral-600 forced-colors:text-[GrayText]",
     },
   },
   compoundVariants: (Object.keys(colors) as Color[]).map((color) => ({
@@ -100,7 +101,7 @@ export function TagGroup<T extends object>({
 
 const removeButtonStyles = tv({
   extend: focusRing,
-  base: "cursor-default rounded-full transition-[background-color] p-0.5 flex items-center justify-center bg-transparent text-[inherit] border-0 hover:bg-black/10 dark:hover:bg-white/10 pressed:bg-black/20 dark:pressed:bg-white/20",
+  base: "flex cursor-default items-center justify-center rounded-full border-0 bg-transparent p-0.5 text-[inherit] transition-[background-color] hover:bg-black/10 dark:hover:bg-white/10 pressed:bg-black/20 dark:pressed:bg-white/20",
 });
 
 export function Tag({ children, color, ...props }: TagProps) {
@@ -119,7 +120,7 @@ export function Tag({ children, color, ...props }: TagProps) {
           {children}
           {allowsRemoving && (
             <Button slot="remove" className={removeButtonStyles}>
-              <XIcon aria-hidden className="w-3 h-3" />
+              <XIcon aria-hidden className="h-3 w-3" />
             </Button>
           )}
         </>

@@ -1,21 +1,19 @@
 "use client";
 import React from "react";
 import {
-  FieldErrorProps,
   Group,
-  GroupProps,
-  InputProps,
-  LabelProps,
   FieldError as RACFieldError,
   Input as RACInput,
   Label as RACLabel,
   Text,
-  TextProps,
   composeRenderProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
+
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
+
+import type { FieldErrorProps, GroupProps, InputProps, LabelProps } from "react-aria-components";
 
 export function Label(props: LabelProps) {
   return (
@@ -28,6 +26,8 @@ export function Label(props: LabelProps) {
     />
   );
 }
+
+type TextProps = React.ComponentPropsWithoutRef<typeof Text>;
 
 export function Description(props: TextProps) {
   return (
@@ -70,7 +70,7 @@ export const fieldBorderStyles = tv({
 
 export const fieldGroupStyles = tv({
   extend: focusRing,
-  base: "group flex items-center h-9 box-border bg-white dark:bg-neutral-900 forced-colors:bg-[Field] border rounded-lg overflow-hidden transition",
+  base: "group box-border flex h-9 items-center overflow-hidden rounded-lg border bg-white transition dark:bg-neutral-900 forced-colors:bg-[Field]",
   variants: fieldBorderStyles.variants,
 });
 

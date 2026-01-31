@@ -1,4 +1,5 @@
 "use client";
+import { ChevronRight } from "lucide-react";
 import React from "react";
 import {
   Tree as AriaTree,
@@ -8,22 +9,22 @@ import {
   TreeItemProps as AriaTreeItemProps,
   TreeProps,
 } from "react-aria-components";
-import { ChevronRight } from "lucide-react";
 import { tv } from "tailwind-variants";
+
 import { Checkbox } from "@/components/ui/Checkbox";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
 
 const itemStyles = tv({
   extend: focusRing,
-  base: "relative font-sans flex group gap-3 cursor-default select-none py-1 px-3 text-sm text-neutral-900 dark:text-neutral-200 bg-white dark:bg-neutral-900 border-t dark:border-t-neutral-700 border-transparent first:border-t-0 -outline-offset-2 first:rounded-t-lg last:rounded-b-lg",
+  base: "group relative flex cursor-default gap-3 border-t border-transparent bg-white px-3 py-1 font-sans text-sm text-neutral-900 -outline-offset-2 select-none first:rounded-t-lg first:border-t-0 last:rounded-b-lg dark:border-t-neutral-700 dark:bg-neutral-900 dark:text-neutral-200",
   variants: {
     isSelected: {
       false:
-        "hover:bg-neutral-100 pressed:bg-neutral-100 dark:hover:bg-neutral-800 dark:pressed:bg-neutral-800",
-      true: "bg-blue-100 dark:bg-blue-700/30 hover:bg-blue-200 pressed:bg-blue-200 dark:hover:bg-blue-700/40 dark:pressed:bg-blue-700/40 border-y-blue-200 dark:border-y-blue-900 z-20",
+        "hover:bg-neutral-100 dark:hover:bg-neutral-800 pressed:bg-neutral-100 dark:pressed:bg-neutral-800",
+      true: "z-20 border-y-blue-200 bg-blue-100 hover:bg-blue-200 dark:border-y-blue-900 dark:bg-blue-700/30 dark:hover:bg-blue-700/40 pressed:bg-blue-200 dark:pressed:bg-blue-700/40",
     },
     isDisabled: {
-      true: "text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText] z-10",
+      true: "z-10 text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
     },
   },
 });
@@ -44,7 +45,7 @@ export function Tree<T extends object>({ children, ...props }: TreeProps<T>) {
 
 const expandButton = tv({
   extend: focusRing,
-  base: "border-0 p-0 bg-transparent shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-start cursor-default [-webkit-tap-highlight-color:transparent]",
+  base: "flex h-8 w-8 shrink-0 cursor-default items-center justify-center rounded-lg border-0 bg-transparent p-0 text-start [-webkit-tap-highlight-color:transparent]",
   variants: {
     isDisabled: {
       true: "text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
@@ -53,10 +54,10 @@ const expandButton = tv({
 });
 
 const chevron = tv({
-  base: "w-4.5 h-4.5 text-neutral-500 dark:text-neutral-400 transition-transform duration-200 ease-in-out",
+  base: "h-4.5 w-4.5 text-neutral-500 transition-transform duration-200 ease-in-out dark:text-neutral-400",
   variants: {
     isExpanded: {
-      true: "transform rotate-90",
+      true: "rotate-90 transform",
     },
     isDisabled: {
       true: "text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
@@ -77,13 +78,13 @@ export function TreeItem(props: TreeItemProps) {
             {selectionMode !== "none" && selectionBehavior === "toggle" && (
               <Checkbox slot="selection" />
             )}
-            <div className="shrink-0 w-[calc(calc(var(--tree-item-level)_-_1)_*_calc(var(--spacing)_*_3))]" />
+            <div className="w-[calc(calc(var(--tree-item-level)_-_1)_*_calc(var(--spacing)_*_3))] shrink-0" />
             {hasChildItems ? (
               <Button slot="chevron" className={expandButton({ isDisabled })}>
                 <ChevronRight aria-hidden className={chevron({ isExpanded, isDisabled })} />
               </Button>
             ) : (
-              <div className="shrink-0 w-8 h-8" />
+              <div className="h-8 w-8 shrink-0" />
             )}
             {props.title}
           </div>

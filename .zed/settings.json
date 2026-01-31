@@ -11,7 +11,7 @@
           "run": "onType",
           "disableNestedConfig": false,
           "fixKind": "safe_fix",
-          "typeAware": true,
+          "typeAware": false,
           "unusedDisableDirectives": "deny"
         }
       }
@@ -158,5 +158,6 @@
         }
       ]
     }
-  }
+  },
+  "read_only_files": ["**/routeTree.gen.ts"]
 }

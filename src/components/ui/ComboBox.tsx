@@ -8,11 +8,12 @@ import {
   ListBoxItemProps,
   ValidationResult,
 } from "react-aria-components";
+
 import { Description, FieldError, FieldGroup, Input, Label } from "@/components/ui/Field";
+import { FieldButton } from "@/components/ui/FieldButton";
 import { DropdownItem, DropdownSection, DropdownSectionProps } from "@/components/ui/ListBox";
 import { Popover } from "@/components/ui/Popover";
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
-import { FieldButton } from "@/components/ui/FieldButton";
 
 export interface ComboBoxProps<T extends object> extends Omit<AriaComboBoxProps<T>, "children"> {
   label?: string;
@@ -38,8 +39,8 @@ export function ComboBox<T extends object>({
       <Label>{label}</Label>
       <FieldGroup>
         <Input className="ps-3 pe-1" />
-        <FieldButton className="w-6 mr-1 outline-offset-0">
-          <ChevronDown aria-hidden className="w-4 h-4" />
+        <FieldButton className="mr-1 w-6 outline-offset-0">
+          <ChevronDown aria-hidden className="h-4 w-4" />
         </FieldButton>
       </FieldGroup>
       {description && <Description>{description}</Description>}
@@ -47,7 +48,7 @@ export function ComboBox<T extends object>({
       <Popover className="w-(--trigger-width)">
         <ListBox
           items={items}
-          className="outline-0 p-1 box-border max-h-[inherit] overflow-auto [clip-path:inset(0_0_0_0_round_.75rem)]"
+          className="box-border max-h-[inherit] overflow-auto p-1 outline-0 [clip-path:inset(0_0_0_0_round_.75rem)]"
         >
           {children}
         </ListBox>

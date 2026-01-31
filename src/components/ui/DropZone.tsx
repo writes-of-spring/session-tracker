@@ -4,13 +4,13 @@ import { composeRenderProps, DropZoneProps, DropZone as RACDropZone } from "reac
 import { tv } from "tailwind-variants";
 
 const dropZone = tv({
-  base: "flex items-center justify-center p-8 min-h-24 w-[30%] font-sans text-base text-balance text-center rounded-lg border border-1 border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900",
+  base: "flex min-h-24 w-[30%] items-center justify-center rounded-lg border border-1 border-neutral-300 bg-white p-8 text-center font-sans text-base text-balance dark:border-neutral-800 dark:bg-neutral-900",
   variants: {
     isFocusVisible: {
       true: "outline outline-2 -outline-offset-1 outline-blue-600 dark:outline-blue-500 forced-colors:outline-[Highlight]",
     },
     isDropTarget: {
-      true: "bg-blue-200 dark:bg-blue-800 outline outline-2 -outline-offset-1 outline-blue-600 dark:outline-blue-500 forced-colors:outline-[Highlight]",
+      true: "bg-blue-200 outline outline-2 -outline-offset-1 outline-blue-600 dark:bg-blue-800 dark:outline-blue-500 forced-colors:outline-[Highlight]",
     },
   },
 });

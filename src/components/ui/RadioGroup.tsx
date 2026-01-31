@@ -9,6 +9,7 @@ import {
   ValidationResult,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+
 import { Description, FieldError, Label } from "@/components/ui/Field";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
 
@@ -26,7 +27,7 @@ export function RadioGroup(props: RadioGroupProps) {
       className={composeTailwindRenderProps(props.className, "group flex flex-col gap-2 font-sans")}
     >
       <Label>{props.label}</Label>
-      <div className="flex group-orientation-vertical:flex-col gap-2 group-orientation-horizontal:gap-4">
+      <div className="flex gap-2 group-orientation-horizontal:gap-4 group-orientation-vertical:flex-col">
         {props.children}
       </div>
       {props.description && <Description>{props.description}</Description>}
@@ -37,15 +38,15 @@ export function RadioGroup(props: RadioGroupProps) {
 
 const styles = tv({
   extend: focusRing,
-  base: "w-4.5 h-4.5 box-border rounded-full border bg-white dark:bg-neutral-900 transition-all",
+  base: "box-border h-4.5 w-4.5 rounded-full border bg-white transition-all dark:bg-neutral-900",
   variants: {
     isSelected: {
       false:
-        "border-neutral-400 dark:border-neutral-400 group-pressed:border-neutral-500 dark:group-pressed:border-neutral-300",
-      true: "border-[calc(var(--spacing)*1.5)] border-neutral-700 dark:border-neutral-300 forced-colors:border-[Highlight]! group-pressed:border-neutral-800 dark:group-pressed:border-neutral-200",
+        "border-neutral-400 group-pressed:border-neutral-500 dark:border-neutral-400 dark:group-pressed:border-neutral-300",
+      true: "border-[calc(var(--spacing)*1.5)] border-neutral-700 group-pressed:border-neutral-800 dark:border-neutral-300 dark:group-pressed:border-neutral-200 forced-colors:border-[Highlight]!",
     },
     isInvalid: {
-      true: "border-red-700 dark:border-red-600 group-pressed:border-red-800 dark:group-pressed:border-red-700 forced-colors:border-[Mark]!",
+      true: "border-red-700 group-pressed:border-red-800 dark:border-red-600 dark:group-pressed:border-red-700 forced-colors:border-[Mark]!",
     },
     isDisabled: {
       true: "border-neutral-200 dark:border-neutral-700 forced-colors:border-[GrayText]!",

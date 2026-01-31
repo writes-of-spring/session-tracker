@@ -1,4 +1,5 @@
 "use client";
+import { XIcon } from "lucide-react";
 import React, { CSSProperties } from "react";
 import {
   UNSTABLE_ToastRegion as ToastRegion,
@@ -9,9 +10,10 @@ import {
   Button,
   Text,
 } from "react-aria-components";
-import { XIcon } from "lucide-react";
-import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 import { flushSync } from "react-dom";
+
+import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+
 import "./Toast.css";
 
 // Define the type for your toast content. This interface defines the properties of your toast content, affecting what you
@@ -40,12 +42,12 @@ export function MyToastRegion() {
     // The ToastRegion should be rendered at the root of your app.
     <ToastRegion
       queue={queue}
-      className="fixed bottom-4 right-4 flex flex-col-reverse gap-2 rounded-lg outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+      className="fixed right-4 bottom-4 flex flex-col-reverse gap-2 rounded-lg outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 focus-visible:outline-solid"
     >
       {({ toast }) => (
         <MyToast toast={toast}>
-          <ToastContent className="flex flex-col flex-1 min-w-0">
-            <Text slot="title" className="font-semibold text-white text-sm">
+          <ToastContent className="flex min-w-0 flex-1 flex-col">
+            <Text slot="title" className="text-sm font-semibold text-white">
               {toast.content.title}
             </Text>
             {toast.content.description && (
@@ -57,9 +59,9 @@ export function MyToastRegion() {
           <Button
             slot="close"
             aria-label="Close"
-            className="flex flex-none appearance-none w-8 h-8 rounded-sm bg-transparent border-none text-white p-0 outline-none hover:bg-white/10 pressed:bg-white/15 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 items-center justify-center [-webkit-tap-highlight-color:transparent]"
+            className="flex h-8 w-8 flex-none appearance-none items-center justify-center rounded-sm border-none bg-transparent p-0 text-white outline-none [-webkit-tap-highlight-color:transparent] hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white focus-visible:outline-solid pressed:bg-white/15"
           >
-            <XIcon className="w-4 h-4" />
+            <XIcon className="h-4 w-4" />
           </Button>
         </MyToast>
       )}

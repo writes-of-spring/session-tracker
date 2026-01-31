@@ -2,6 +2,7 @@
 import React from "react";
 import { Switch as AriaSwitch, SwitchProps as AriaSwitchProps } from "react-aria-components";
 import { tv } from "tailwind-variants";
+
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
 
 export interface SwitchProps extends Omit<AriaSwitchProps, "children"> {
@@ -10,21 +11,21 @@ export interface SwitchProps extends Omit<AriaSwitchProps, "children"> {
 
 const track = tv({
   extend: focusRing,
-  base: "flex h-5 w-9 box-border px-px items-center shrink-0 cursor-default rounded-full transition duration-200 ease-in-out shadow-inner border border-transparent font-sans",
+  base: "box-border flex h-5 w-9 shrink-0 cursor-default items-center rounded-full border border-transparent px-px font-sans shadow-inner transition duration-200 ease-in-out",
   variants: {
     isSelected: {
       false:
-        "bg-neutral-100 dark:bg-neutral-800 group-pressed:bg-neutral-200 dark:group-pressed:bg-neutral-700 border-neutral-400 dark:border-neutral-400",
-      true: "bg-neutral-700 dark:bg-neutral-300 forced-colors:bg-[Highlight]! group-pressed:bg-neutral-800 dark:group-pressed:bg-neutral-200",
+        "border-neutral-400 bg-neutral-100 group-pressed:bg-neutral-200 dark:border-neutral-400 dark:bg-neutral-800 dark:group-pressed:bg-neutral-700",
+      true: "bg-neutral-700 group-pressed:bg-neutral-800 dark:bg-neutral-300 dark:group-pressed:bg-neutral-200 forced-colors:bg-[Highlight]!",
     },
     isDisabled: {
-      true: "bg-neutral-100 dark:bg-neutral-800 group-selected:bg-neutral-300 dark:group-selected:bg-neutral-800 forced-colors:group-selected:bg-[GrayText]! border-neutral-300 dark:border-neutral-900 forced-colors:border-[GrayText]",
+      true: "border-neutral-300 bg-neutral-100 group-selected:bg-neutral-300 dark:border-neutral-900 dark:bg-neutral-800 dark:group-selected:bg-neutral-800 forced-colors:border-[GrayText] forced-colors:group-selected:bg-[GrayText]!",
     },
   },
 });
 
 const handle = tv({
-  base: "h-4 w-4 transform rounded-full outline outline-1 -outline-offset-1 outline-transparent shadow-xs transition duration-200 ease-in-out",
+  base: "h-4 w-4 transform rounded-full shadow-xs outline outline-1 -outline-offset-1 outline-transparent transition duration-200 ease-in-out",
   variants: {
     isSelected: {
       false: "translate-x-0 bg-neutral-900 dark:bg-neutral-300",
