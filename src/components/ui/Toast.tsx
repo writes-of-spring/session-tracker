@@ -1,19 +1,18 @@
 "use client";
 import { XIcon } from "lucide-react";
-import React, { CSSProperties } from "react";
+import React from "react";
 import {
   UNSTABLE_ToastRegion as ToastRegion,
   UNSTABLE_Toast as Toast,
   UNSTABLE_ToastQueue as ToastQueue,
   UNSTABLE_ToastContent as ToastContent,
-  ToastProps,
   Button,
   Text,
 } from "react-aria-components";
 import { flushSync } from "react-dom";
-
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
-
+import type { CSSProperties } from "react";
+import type { ToastProps } from "react-aria-components";
 import "./Toast.css";
 
 // Define the type for your toast content. This interface defines the properties of your toast content, affecting what you

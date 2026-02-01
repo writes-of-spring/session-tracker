@@ -2,7 +2,9 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["eslint", "typescript", "unicorn", "react", "oxc", "import"],
   "categories": {},
-  "rules": {},
+  "rules": {
+    "typescript/consistent-type-imports": "error"
+  },
   "settings": {
     "jsx-a11y": {
       "polymorphicPropName": null,

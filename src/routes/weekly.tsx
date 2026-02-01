@@ -3,7 +3,6 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { TooltipTrigger } from "react-aria-components";
 import { z } from "zod";
-
 import { useAppForm } from "@/components/form";
 import { Button } from "@/components/ui/Button";
 import { SelectItem } from "@/components/ui/Select";
@@ -210,15 +209,15 @@ function WeeklyReport() {
             Back to home
           </Link>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs tracking-widest text-ink/60 uppercase">Weekly report</p>
-            <h1 className="mt-3 text-3xl font-semibold text-ink md:text-5xl">
-              Record weekly client sessions
-            </h1>
-            <p className="mt-4 text-sm text-ink/70">
-              Add each client entry, check receipts, and download a CSV copy to your device.
-            </p>
-          </div>
+            <div>
+              <p className="text-xs tracking-widest text-ink/60 uppercase">Weekly report</p>
+              <h1 className="mt-3 text-3xl font-semibold text-ink md:text-5xl">
+                Record weekly client sessions
+              </h1>
+              <p className="mt-4 text-sm text-ink/70">
+                Add each client entry, check receipts, and download a CSV copy to your device.
+              </p>
+            </div>
           </div>
         </div>
 

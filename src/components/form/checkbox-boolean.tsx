@@ -1,9 +1,6 @@
 import React from "react";
-
 import { Checkbox as UiCheckbox } from "../ui/Checkbox";
-
 import { useFieldContext } from ".";
-
 import type { CheckboxProps } from "react-aria-components";
 
 interface Props extends Omit<CheckboxProps, "isSelected" | "onChange" | "children"> {

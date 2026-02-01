@@ -1,13 +1,13 @@
 "use client";
-import React, { ReactNode } from "react";
-import {
-  CheckboxGroup as AriaCheckboxGroup,
+import React from "react";
+import { CheckboxGroup as AriaCheckboxGroup } from "react-aria-components";
+import { Description, FieldError, Label } from "@/components/ui/Field";
+import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type { ReactNode } from "react";
+import type {
   CheckboxGroupProps as AriaCheckboxGroupProps,
   ValidationResult,
 } from "react-aria-components";
-
-import { Description, FieldError, Label } from "@/components/ui/Field";
-import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 
 export interface CheckboxGroupProps extends Omit<AriaCheckboxGroupProps, "children"> {
   label?: string;

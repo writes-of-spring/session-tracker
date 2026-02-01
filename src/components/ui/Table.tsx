@@ -9,24 +9,25 @@ import {
   TableHeader as AriaTableHeader,
   TableBody as AriaTableBody,
   Button,
-  CellProps,
   Collection,
-  ColumnProps,
   ColumnResizer,
   Group,
   ResizableTableContainer,
-  RowProps,
-  TableHeaderProps,
-  TableProps as AriaTableProps,
   composeRenderProps,
   useTableOptions,
-  TableBodyProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
-
 import { Checkbox } from "@/components/ui/Checkbox";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
+import type {
+  CellProps,
+  ColumnProps,
+  RowProps,
+  TableHeaderProps,
+  TableProps as AriaTableProps,
+  TableBodyProps,
+} from "react-aria-components";
 
 interface TableProps extends Omit<AriaTableProps, "className"> {
   className?: string;
@@ -74,9 +75,7 @@ export function Column(props: ColumnProps) {
             <span className="truncate">{children}</span>
             {allowsSorting && (
               <span
-                className={`flex h-4 w-4 items-center justify-center transition ${
-                  sortDirection === "descending" ? "rotate-180" : ""
-                }`}
+                className={`flex h-4 w-4 items-center justify-center transition ${sortDirection === "descending" ? "rotate-180" : ""}`}
               >
                 {sortDirection && (
                   <ArrowUp

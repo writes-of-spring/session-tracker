@@ -19,8 +19,7 @@
     "oxfmt": {
       "initialization_options": {
         "settings": {
-          "configPath": null,
-          "run": "onSave"
+          "fmt.configPath": null
         }
       }
     }
@@ -140,7 +139,7 @@
           "code_action": "source.fixAll.oxc"
         },
         {
-          "code_action": "source.organizeImports"
+          "code_action": "source.organizeImports.oxc"
         }
       ]
     },
@@ -159,5 +158,17 @@
       ]
     }
   },
-  "read_only_files": ["**/routeTree.gen.ts"]
+  "read_only_files": ["**/routeTree.gen.ts"],
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/routeTree.gen.ts"
+  ]
 }

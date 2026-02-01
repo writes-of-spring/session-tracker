@@ -6,13 +6,11 @@ import {
   TreeItem as AriaTreeItem,
   TreeItemContent as AriaTreeItemContent,
   Button,
-  TreeItemProps as AriaTreeItemProps,
-  TreeProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { Checkbox } from "@/components/ui/Checkbox";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
+import type { TreeItemProps as AriaTreeItemProps, TreeProps } from "react-aria-components";
 
 const itemStyles = tv({
   extend: focusRing,

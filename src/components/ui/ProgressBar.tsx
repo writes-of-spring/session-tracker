@@ -1,12 +1,9 @@
 "use client";
 import React from "react";
-import {
-  ProgressBar as AriaProgressBar,
-  ProgressBarProps as AriaProgressBarProps,
-} from "react-aria-components";
-
+import { ProgressBar as AriaProgressBar } from "react-aria-components";
 import { Label } from "@/components/ui/Field";
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type { ProgressBarProps as AriaProgressBarProps } from "react-aria-components";
 
 export interface ProgressBarProps extends AriaProgressBarProps {
   label?: string;

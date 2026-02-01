@@ -1,7 +1,5 @@
 import { TextField as UiTextField } from "@/components/ui/TextField";
-
 import { useFieldContext } from "./index";
-
 import type { TextFieldProps as UiTextFieldProps } from "@/components/ui/TextField";
 
 export type TextFieldProps = Omit<UiTextFieldProps, "validate">;

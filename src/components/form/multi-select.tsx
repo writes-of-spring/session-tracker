@@ -1,9 +1,7 @@
 import { CheckboxGroup as AriaCheckboxGroup } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { Checkbox } from "../ui/Checkbox";
 import { Description, FieldError, Label } from "../ui/Field";
-
 import { useFieldContext } from "./index";
 
 interface Option {

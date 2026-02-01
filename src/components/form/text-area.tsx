@@ -1,7 +1,5 @@
 import { TextArea as UiTextArea } from "@/components/ui/TextArea";
-
 import { useFieldContext } from "./index";
-
 import type { TextAreaProps as UiTextAreaProps } from "@/components/ui/TextArea";
 
 export type TextAreaProps = Omit<UiTextAreaProps, "validate">;

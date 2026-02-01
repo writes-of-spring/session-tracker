@@ -1,7 +1,5 @@
 import { NumberField as UiNumberField } from "@/components/ui/NumberField";
-
 import { useFieldContext } from "./index";
-
 import type { NumberFieldProps as UiNumberFieldProps } from "@/components/ui/NumberField";
 
 export type NumberFieldProps = Omit<UiNumberFieldProps, "validate">;

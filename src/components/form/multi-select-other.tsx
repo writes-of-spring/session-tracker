@@ -1,10 +1,8 @@
 import { CheckboxGroup as AriaCheckboxGroup } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { Checkbox } from "../ui/Checkbox";
 import { Description, FieldError, Label } from "../ui/Field";
 import { TextField } from "../ui/TextField";
-
 import { useFieldContext } from "./index";
 
 const OTHER_VALUE = "other";

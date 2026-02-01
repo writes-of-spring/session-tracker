@@ -1,12 +1,8 @@
 "use client";
 import React from "react";
-import {
-  Tooltip as AriaTooltip,
-  TooltipProps as AriaTooltipProps,
-  OverlayArrow,
-  composeRenderProps,
-} from "react-aria-components";
+import { Tooltip as AriaTooltip, OverlayArrow, composeRenderProps } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import type { TooltipProps as AriaTooltipProps } from "react-aria-components";
 
 export interface TooltipProps extends Omit<AriaTooltipProps, "children"> {
   children: React.ReactNode;

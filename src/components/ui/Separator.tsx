@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import { Separator as RACSeparator, SeparatorProps } from "react-aria-components";
+import { Separator as RACSeparator } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import type { SeparatorProps } from "react-aria-components";
 
 const styles = tv({
   base: "border-none bg-neutral-300 dark:bg-neutral-600 forced-colors:bg-[ButtonBorder]",

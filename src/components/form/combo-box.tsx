@@ -1,9 +1,6 @@
 import React from "react";
-
 import { ComboBox as UiComboBox } from "../ui/ComboBox";
-
 import { useFieldContext } from ".";
-
 import type { ComboBoxProps } from "../ui/ComboBox";
 import type { Key } from "react-aria";
 

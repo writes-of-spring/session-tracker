@@ -1,19 +1,18 @@
 "use client";
 import { ChevronDown } from "lucide-react";
 import React from "react";
-import {
-  ComboBox as AriaComboBox,
+import { ComboBox as AriaComboBox, ListBox } from "react-aria-components";
+import { Description, FieldError, FieldGroup, Input, Label } from "@/components/ui/Field";
+import { FieldButton } from "@/components/ui/FieldButton";
+import { DropdownItem, DropdownSection } from "@/components/ui/ListBox";
+import { Popover } from "@/components/ui/Popover";
+import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type { DropdownSectionProps } from "@/components/ui/ListBox";
+import type {
   ComboBoxProps as AriaComboBoxProps,
-  ListBox,
   ListBoxItemProps,
   ValidationResult,
 } from "react-aria-components";
-
-import { Description, FieldError, FieldGroup, Input, Label } from "@/components/ui/Field";
-import { FieldButton } from "@/components/ui/FieldButton";
-import { DropdownItem, DropdownSection, DropdownSectionProps } from "@/components/ui/ListBox";
-import { Popover } from "@/components/ui/Popover";
-import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 
 export interface ComboBoxProps<T extends object> extends Omit<AriaComboBoxProps<T>, "children"> {
   label?: string;

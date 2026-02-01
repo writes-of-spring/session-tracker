@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { RadioGroup as AriaRadioGroup } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { Description, FieldError, Label } from "../ui/Field";
 import { Radio } from "../ui/RadioGroup";
 import { TextField } from "../ui/TextField";
-
 import { useFieldContext } from "./index";
 
 const OTHER_VALUE = "other";

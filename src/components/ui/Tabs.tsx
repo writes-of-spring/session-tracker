@@ -7,17 +7,18 @@ import {
   TabPanel as RACTabPanel,
   Tabs as RACTabs,
   SelectionIndicator,
+  composeRenderProps,
+} from "react-aria-components";
+import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+import { focusRing } from "@/lib/react-aria-utils";
+import type {
   TabListProps,
   TabPanelProps,
   TabPanelsProps,
   TabProps,
   TabsProps,
-  composeRenderProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
-import { tv } from "tailwind-variants";
-
-import { focusRing } from "@/lib/react-aria-utils";
 
 const tabsStyles = tv({
   base: "flex max-w-full gap-4 font-sans",

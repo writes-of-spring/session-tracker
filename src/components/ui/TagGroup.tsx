@@ -4,19 +4,20 @@ import React, { createContext, useContext } from "react";
 import {
   Tag as AriaTag,
   TagGroup as AriaTagGroup,
-  TagGroupProps as AriaTagGroupProps,
-  TagProps as AriaTagProps,
   Button,
   TagList,
-  TagListProps,
   Text,
   composeRenderProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
-
 import { Description, Label } from "@/components/ui/Field";
 import { focusRing } from "@/lib/react-aria-utils";
+import type {
+  TagGroupProps as AriaTagGroupProps,
+  TagProps as AriaTagProps,
+  TagListProps,
+} from "react-aria-components";
 
 const colors = {
   gray: "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-600 dark:hover:border-neutral-500",

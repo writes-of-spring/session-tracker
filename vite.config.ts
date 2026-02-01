@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";

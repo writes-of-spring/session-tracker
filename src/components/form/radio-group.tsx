@@ -1,7 +1,5 @@
 import { Radio, RadioGroup as UiRadioGroup } from "@/components/ui/RadioGroup";
-
 import { useFieldContext } from ".";
-
 import type { RadioGroupProps as UiRadioGroupProps } from "@/components/ui/RadioGroup";
 
 export interface RadioGroupProps extends Omit<

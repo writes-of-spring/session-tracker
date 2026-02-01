@@ -1,22 +1,20 @@
 "use client";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { NumberField as AriaNumberField, Button } from "react-aria-components";
 import {
-    NumberField as AriaNumberField,
-    NumberFieldProps as AriaNumberFieldProps,
-    Button,
-    ButtonProps,
-    ValidationResult,
-} from "react-aria-components";
-
-import {
-    Description,
-    FieldError,
-    FieldGroup,
-    Input,
-    Label,
-    fieldBorderStyles,
+  Description,
+  FieldError,
+  FieldGroup,
+  Input,
+  Label,
+  fieldBorderStyles,
 } from "@/components/ui/Field";
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type {
+  NumberFieldProps as AriaNumberFieldProps,
+  ButtonProps,
+  ValidationResult,
+} from "react-aria-components";
 
 export interface NumberFieldProps extends AriaNumberFieldProps {
   label?: string;

@@ -3,17 +3,18 @@ import { ChevronRight } from "lucide-react";
 import React, { useContext } from "react";
 import {
   Disclosure as AriaDisclosure,
-  DisclosureProps as AriaDisclosureProps,
   DisclosurePanel as AriaDisclosurePanel,
-  DisclosurePanelProps as AriaDisclosurePanelProps,
   composeRenderProps,
   Heading,
   DisclosureStateContext,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { Button } from "@/components/ui/Button";
 import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type {
+  DisclosureProps as AriaDisclosureProps,
+  DisclosurePanelProps as AriaDisclosurePanelProps,
+} from "react-aria-components";
 
 const disclosure = tv({
   base: "group min-w-50 rounded-lg font-sans text-neutral-900 dark:text-neutral-200",

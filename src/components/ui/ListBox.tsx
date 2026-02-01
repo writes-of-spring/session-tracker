@@ -9,9 +9,7 @@ import {
   composeRenderProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
-
 import type {
   ListBoxProps as AriaListBoxProps,
   ListBoxItemProps,

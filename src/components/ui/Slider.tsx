@@ -2,15 +2,14 @@
 import React from "react";
 import {
   Slider as AriaSlider,
-  SliderProps as AriaSliderProps,
   SliderOutput,
   SliderThumb,
   SliderTrack,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
 import { Label } from "@/components/ui/Field";
 import { composeTailwindRenderProps, focusRing } from "@/lib/react-aria-utils";
+import type { SliderProps as AriaSliderProps } from "react-aria-components";
 
 const trackStyles = tv({
   base: "rounded-full",

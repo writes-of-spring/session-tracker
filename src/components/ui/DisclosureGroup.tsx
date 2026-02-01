@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import {
-  DisclosureGroup as AriaDisclosureGroup,
-  DisclosureGroupProps as AriaDisclosureGroupProps,
-} from "react-aria-components";
+import { DisclosureGroup as AriaDisclosureGroup } from "react-aria-components";
+import type { DisclosureGroupProps as AriaDisclosureGroupProps } from "react-aria-components";
 
 export interface DisclosureGroupProps extends AriaDisclosureGroupProps {
   children: React.ReactNode;

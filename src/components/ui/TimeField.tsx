@@ -1,15 +1,14 @@
 "use client";
 import React from "react";
-import {
-  TimeField as AriaTimeField,
+import { TimeField as AriaTimeField } from "react-aria-components";
+import { DateInput } from "@/components/ui/DateField";
+import { Description, FieldError, Label } from "@/components/ui/Field";
+import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type {
   TimeFieldProps as AriaTimeFieldProps,
   TimeValue,
   ValidationResult,
 } from "react-aria-components";
-
-import { DateInput } from "@/components/ui/DateField";
-import { Description, FieldError, Label } from "@/components/ui/Field";
-import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 
 export interface TimeFieldProps<T extends TimeValue> extends AriaTimeFieldProps<T> {
   label?: string;

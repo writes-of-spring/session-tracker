@@ -4,25 +4,25 @@ import React from "react";
 import {
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
-  MenuProps,
-  MenuItemProps,
   MenuSection as AriaMenuSection,
-  MenuSectionProps as AriaMenuSectionProps,
   MenuTrigger as AriaMenuTrigger,
   SubmenuTrigger as AriaSubmenuTrigger,
   Separator,
-  SeparatorProps,
   composeRenderProps,
   Header,
   Collection,
+} from "react-aria-components";
+import { dropdownItemStyles } from "@/components/ui/ListBox";
+import { Popover } from "@/components/ui/Popover";
+import type { PopoverProps } from "@/components/ui/Popover";
+import type {
+  MenuProps,
+  MenuItemProps,
+  MenuSectionProps as AriaMenuSectionProps,
+  SeparatorProps,
   SubmenuTriggerProps,
   MenuTriggerProps as AriaMenuTriggerProps,
 } from "react-aria-components";
-
-import { dropdownItemStyles } from "@/components/ui/ListBox";
-import { Popover } from "@/components/ui/Popover";
-
-import type { PopoverProps } from "@/components/ui/Popover";
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (

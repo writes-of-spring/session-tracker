@@ -3,10 +3,10 @@ import React from "react";
 import {
   Toolbar as RACToolbar,
   ToggleButtonGroupContext,
-  ToolbarProps,
   composeRenderProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import type { ToolbarProps } from "react-aria-components";
 
 const styles = tv({
   base: "flex flex-wrap gap-2",

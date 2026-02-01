@@ -1,7 +1,5 @@
 import { Select as UiSelect } from "../ui/Select";
-
 import { useFieldContext } from ".";
-
 import type { SelectProps as UiSelectProps } from "../ui/Select";
 import type { Key } from "react-aria-components";
 

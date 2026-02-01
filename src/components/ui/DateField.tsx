@@ -2,17 +2,18 @@
 import React from "react";
 import {
   DateField as AriaDateField,
-  DateFieldProps as AriaDateFieldProps,
   DateInput as AriaDateInput,
-  DateInputProps,
   DateSegment,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+import { Description, FieldError, Label, fieldGroupStyles } from "@/components/ui/Field";
+import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
+import type {
+  DateFieldProps as AriaDateFieldProps,
+  DateInputProps,
   DateValue,
   ValidationResult,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
-
-import { Description, FieldError, Label, fieldGroupStyles } from "@/components/ui/Field";
-import { composeTailwindRenderProps } from "@/lib/react-aria-utils";
 
 export interface DateFieldProps<T extends DateValue> extends AriaDateFieldProps<T> {
   label?: string;
