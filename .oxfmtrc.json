@@ -4,7 +4,6 @@
   "semi": true,
   "experimentalSortImports": {
     "partitionByNewline": false,
-    "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
     "newlinesBetween": false,
     "ignoreCase": true
   },
