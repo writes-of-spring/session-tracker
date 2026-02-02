@@ -7,60 +7,12 @@ import { useAppForm } from "@/components/form";
 import { Button } from "@/components/ui/Button";
 import { SelectItem } from "@/components/ui/Select";
 import { Tooltip } from "@/components/ui/Tooltip";
-
-const entrySchema = z
-  .object({
-    firstName: z.string().min(1, "First name is required"),
-    phone: z.string().min(1, "Phone number is required"),
-    requiresReceipt: z.boolean(),
-    email: z.string(),
-    surname: z.string(),
-    feePaid: z.number().min(0, "Fee is required"),
-    numberOfSessions: z.number().int().min(1, "Number of sessions must be at least 1"),
-    modalityUsed: z.string().min(1, "Modality is required"),
-    rationale: z.string().min(1, "Rationale is required"),
-    noShow: z.boolean(),
-    cancelled: z.boolean(),
-  })
-  .superRefine((value, ctx) => {
-    if (value.requiresReceipt) {
-      const email = value.email.trim();
-      if (email.length === 0) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "Email is required for receipts",
-          path: ["email"],
-        });
-      } else if (!z.string().email().safeParse(email).success) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "Email must be valid",
-          path: ["email"],
-        });
-      }
-
-      const surname = value.surname.trim();
-      if (surname.length === 0) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "Surname is required for receipts",
-          path: ["surname"],
-        });
-      }
-
-      if (value.feePaid <= 0) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "Fee paid is required for receipts",
-          path: ["feePaid"],
-        });
-      }
-    }
-  });
+import { weeklyEntry, weeklyEntrySchema } from "@/routes/weekly/-utils/weekly-entry";
+import { downloadCsv, sanitizeFileSegment, toCsvRow } from "@/routes/weekly/-utils/weekly-utils";
 
 const schema = z.object({
   therapistName: z.string().min(1, "Therapist name is required"),
-  entries: z.array(entrySchema).min(1, "At least one client is required"),
+  entries: z.array(weeklyEntrySchema).min(1, "At least one client is required"),
 });
 
 const modalityOptions = [
@@ -73,83 +25,6 @@ const modalityOptions = [
   { label: "Other", value: "other" },
 ] as const;
 
-const emptyEntry: {
-  firstName: string;
-  phone: string;
-  requiresReceipt: boolean;
-  email: string;
-  surname: string;
-  feePaid: number;
-  numberOfSessions: number;
-  modalityUsed: string;
-  rationale: string;
-  noShow: boolean;
-  cancelled: boolean;
-} = {
-  firstName: "",
-  phone: "",
-  requiresReceipt: false,
-  email: "",
-  surname: "",
-  feePaid: 0,
-  numberOfSessions: 1,
-  modalityUsed: "",
-  rationale: "",
-  noShow: false,
-  cancelled: false,
-};
-
-function escapeCsvValue(value: string) {
-  if (value.includes('"')) {
-    return `"${value.replace(/"/g, '""')}"`;
-  }
-
-  if (value.includes(",") || value.includes("\n")) {
-    return `"${value}"`;
-  }
-
-  return value;
-}
-
-function toCsvRow(values: Array<string | number | boolean | null | undefined>) {
-  return values
-    .map((value) => {
-      if (value === null || value === undefined) {
-        return "";
-      }
-      if (typeof value === "number") {
-        return value.toFixed(2);
-      }
-      if (typeof value === "boolean") {
-        return value ? "true" : "false";
-      }
-      return escapeCsvValue(value);
-    })
-    .join(",");
-}
-
-function sanitizeFileSegment(value: string) {
-  const cleaned = value
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-
-  return cleaned.length > 0 ? cleaned : "therapist";
-}
-
-function downloadCsv(content: string, fileName: string) {
-  const blob = new Blob([content], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = fileName;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-}
-
 export const Route = createFileRoute("/weekly")({
   component: WeeklyReport,
 });
@@ -158,7 +33,7 @@ function WeeklyReport() {
   const form = useAppForm({
     defaultValues: {
       therapistName: "",
-      entries: [emptyEntry],
+      entries: [weeklyEntry],
     },
     validationLogic: revalidateLogic(),
     validators: {
@@ -171,6 +46,7 @@ function WeeklyReport() {
         "requiresReceipt",
         "email",
         "surname",
+        "parentName",
         "feePaid",
         "numberOfSessions",
         "modalityUsed",
@@ -185,6 +61,7 @@ function WeeklyReport() {
           entry.requiresReceipt,
           entry.email ?? "",
           entry.surname ?? "",
+          entry.parentName ?? "",
           entry.feePaid,
           String(entry.numberOfSessions),
           entry.modalityUsed,
@@ -289,6 +166,14 @@ function WeeklyReport() {
                           <field.TextField label="Phone number" placeholder="Client phone" />
                         )}
                       </form.AppField>
+                      <form.AppField name={`entries[${index}].parentName`}>
+                        {(field) => (
+                          <field.TextField
+                            label="Parent name"
+                            placeholder="Parent or guardian name (optional)"
+                          />
+                        )}
+                      </form.AppField>
                     </div>
 
                     <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -390,7 +275,7 @@ function WeeklyReport() {
                 <Button
                   type="button"
                   variant="secondary"
-                  onPress={() => field.pushValue({ ...emptyEntry })}
+                  onPress={() => field.pushValue({ ...weeklyEntry })}
                   className="w-full justify-center"
                 >
                   Add another client
